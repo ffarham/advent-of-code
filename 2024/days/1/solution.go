@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-func getContents() ([]int, []int) {
+func getContents() (leftArr, rightArr []int) {
 	file, err := os.Open("./input.txt")
 	if err != nil {
 		panic(err)
@@ -23,8 +23,8 @@ func getContents() ([]int, []int) {
 		panic(scanner.Err())
 	}
 
-	leftArr := []int{}
-	rightArr := []int{}
+	leftArr = []int{}
+	rightArr = []int{}
 
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -48,7 +48,7 @@ func getContents() ([]int, []int) {
 		panic(errors.New("the left and right arrays are of different sizes"))
 	}
 
-	return leftArr, rightArr
+	return
 }
 
 func part1() {

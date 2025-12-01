@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func getContents() [][]int {
+func getContents() (lines [][]int) {
 	file, err := os.Open("./input.txt")
 	if err != nil {
 		panic(err)
@@ -21,7 +21,7 @@ func getContents() [][]int {
 		panic(scanner.Err())
 	}
 
-	lines := [][]int{}
+	lines = [][]int{}
 
 	for scanner.Scan() {
 
@@ -39,19 +39,18 @@ func getContents() [][]int {
 
 	}
 
-	return lines
-
+	return
 }
 
-func removeIndex(arr []int, index int) []int {
-	newArr := make([]int, len(arr)-1)
+func removeIndex(arr []int, index int) (newArr []int) {
+	newArr = make([]int, len(arr)-1)
 	newArr = append(newArr, arr[:index]...)
 	newArr = append(newArr, arr[index+1:]...)
-	return newArr
+	return
 }
 
-func validator(line []int) bool {
-	safeFlag := true
+func validator(line []int) (isValid bool) {
+	isValid = true
 	prevFlag := true
 	increasing := true
 	prev := 0
@@ -64,7 +63,7 @@ func validator(line []int) bool {
 
 		// equal check
 		if val == prev {
-			safeFlag = false
+			isValid = false
 			break
 		}
 
@@ -78,19 +77,19 @@ func validator(line []int) bool {
 		// order check
 		if increasing {
 			if val < prev {
-				safeFlag = false
+				isValid = false
 				break
 			}
 		} else {
 			if val > prev {
-				safeFlag = false
+				isValid = false
 				break
 			}
 		}
 
 		// diff check
 		if math.Abs(float64(val-prev)) > 3 {
-			safeFlag = false
+			isValid = false
 			break
 		}
 
@@ -98,7 +97,7 @@ func validator(line []int) bool {
 
 	}
 
-	return safeFlag
+	return
 }
 
 func part1(line []int) bool {
