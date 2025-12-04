@@ -80,7 +80,7 @@ func part2(input []string) (output int) {
 				}
 			}
 			if !changeFlag {
-				maxStr += string(line[i:len(line)])
+				maxStr += string(line[i:])
 				break
 			}
 			changeFlag = false
