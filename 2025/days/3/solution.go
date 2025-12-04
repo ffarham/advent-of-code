@@ -8,8 +8,6 @@ import (
 	"strconv"
 )
 
-// Time Complexity: O(n)
-
 func getInput() []string {
 	file, _ := os.Open("input.txt")
 	defer file.Close()
@@ -44,6 +42,8 @@ func part1(input []string) (totalJoltage int) {
 	}
 	return totalJoltage
 }
+
+// Time Complexity: O(n) where n in the length of the sequence
 
 func part2(input []string) (output int) {
 
